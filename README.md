@@ -26,7 +26,7 @@ sip-geprek-hba/
 ### 1. Clone repository
 
 ```bash
-git clone https://github.com/username/sip-geprek-hba.git
+git clone https://github.com/21naufal/sip-geprek-hba.git
 cd sip-geprek-hba
 ```
 
