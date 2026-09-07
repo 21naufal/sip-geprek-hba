@@ -1,27 +1,32 @@
 # SIP-Geprek HBA
 
-Sistem Informasi Pemesanan Geprek HBA — aplikasi manajemen pemesanan dan transaksi untuk usaha kuliner, dibangun menggunakan React (Vite) untuk frontend, Node.js (Express) untuk backend, dan MySQL sebagai database.
+Sistem Informasi Pemesanan Geprek HBA adalah aplikasi manajemen pemesanan dan transaksi untuk usaha kuliner, dengan tiga peran pengguna (Admin, Kasir, Etalase) yang masing-masing memiliki dashboard dan alur kerja sendiri.
 
----
+## 🎥 Demo Aplikasi
 
-## 📁 Struktur Proyek
+<video width="100%" controls>
+  <source src="assets/demo-aplikasi.mp4" type="video/mp4">
+  Browser Anda tidak mendukung pemutaran video.
+</video>
 
-sip-geprek-hba/
-├── backend/ → Backend Node.js + Express + MySQL
-└── frontend/ → Frontend React + Vite
+## Fitur Utama
 
----
+- **Autentikasi multi-role** — Admin, Kasir, dan Etalase
+- **Manajemen menu** — tambah, edit, dan kelola daftar menu
+- **Manajemen pesanan** — input pesanan, pantau status, hingga riwayat pesanan
+- **Manajemen staff** — tambah dan edit data staff (khusus Admin)
+- **Laporan & analitik** — laporan penjualan, pendapatan, dan menu terlaris
+- **Ekspor data** — unduh laporan dalam format Excel
 
-## 🚀 Fitur Utama
+## Teknologi
 
-- Multi-role login: Admin, Kasir, Etalase
-- Manajemen pesanan & transaksi
-- Manajemen pesanan & transaksi
-- Laporan penjualan dan pendapatan
+| Bagian | Teknologi |
+|---|---|
+| Frontend | React (Vite), TailwindCSS |
+| Backend | Node.js, Express.js |
+| Database | MySQL |
 
----
-
-## 📦 Instalasi Lokal
+## Instalasi Lokal
 
 ### 1. Clone repository
 
@@ -30,76 +35,55 @@ git clone https://github.com/21naufal/sip-geprek-hba.git
 cd sip-geprek-hba
 ```
 
-### 2. Setup Backend
+### 2. Backend
 
+```bash
 cd backend
 npm install
+```
 
-- Konfigurasi .env
-  Buat file .env di folder backend/ dengan format:
-  DB_HOST=localhost
-  DB_PORT=3306
-  DB_USER=root
-  DB_PASSWORD=yourpassword
-  DB_NAME=sipgeprek
-  PORT=5000
+Buat file `.env` di folder `backend/`:
 
-- Jalankan server backend
-  npx nodemon server.js
+```env
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=sipgeprek
+PORT=5000
+```
 
-### 3. Setup Frontend
+Jalankan server:
 
-cd backend
+```bash
+npm run dev
+```
+
+### 3. Frontend
+
+```bash
+cd frontend
 npm install
+```
 
-cd ../frontend
-npm install
+Buat file `.env` di folder `frontend/`:
 
-- Konfigurasi .env
-  Buat file .env di folder frontend/ dengan isi:
-
+```env
 VITE_API_URL=http://localhost:5000
+```
 
-- Jalankan frontend
-  npm run dev
-  Frontend akan berjalan di http://localhost:5173.
+Jalankan aplikasi:
 
----
+```bash
+npm run dev
+```
 
-## ☁️ Deployment
+Frontend akan berjalan di `http://localhost:5173`.
 
-- 📍 Backend (Railway)
+## Lisensi
 
-1. Login ke Railway
-2. Buat project baru, lalu deploy folder backend/
-3. Tambahkan Environment Variables sesuai file .env
-4. Railway akan memberikan URL backend, misal: https://sip-backend.up.railway.app
+Proyek ini bebas digunakan untuk pembelajaran atau pengembangan lanjutan. Tidak untuk dikomersialisasikan tanpa izin.
 
-- 📍 Frontend (Vercel)
+## Developer
 
-1. Login ke Vercel
-2. Buat project baru dari folder frontend/
-3. Set environment variable VITE_API_URL ke URL backend Railway
-4. Deploy dan dapatkan URL frontend, misalnya: https://sip-geprek-hba.vercel.app
-
----
-
-## 🛠 Teknologi
-
-- Frontend: React (Vite), TailwindCSS
-- Backend: Node.js, Express.js
-- Database: MySQL
-- Deployment: Vercel (frontend), /Railway (backend,database)
-
----
-
-## 👨‍💻 Developer
-
-Dibuat oleh : Naufal Septio Akbar – Fullstack Developer
-🚀 Proyek pengelolaan sistem informasi warung geprek berbasis web
-
----
-
-## 📄 Lisensi
-
-Proyek ini bebas digunakan untuk pembelajaran atau pengembangan lanjutan internal. Tidak untuk dikomersialisasikan tanpa izin.
+**Naufal Septio Akbar** — Fullstack Developer
