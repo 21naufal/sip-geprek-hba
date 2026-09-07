@@ -6,20 +6,21 @@ USE sipgeprek;
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nama VARCHAR(100),
-  email VARCHAR(100) UNIQUE,
+  telepon VARCHAR(20) UNIQUE,
   password VARCHAR(255),
   role ENUM('admin', 'kasir', 'etalase') NOT NULL,
   foto LONGBLOB,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  tanggal_gabung DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Tabel menu
 CREATE TABLE menu (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  nama_menu VARCHAR(100),
+  nama VARCHAR(100),
   kategori ENUM('makanan', 'minuman'),
   harga INT,
-  status ENUM('tersedia', 'tidak tersedia'),
+  deskripsi VARCHAR(255),
+  status ENUM('tersedia', 'tidak tersedia') DEFAULT 'tersedia',
   gambar LONGBLOB,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -27,11 +28,14 @@ CREATE TABLE menu (
 -- Tabel pesanan
 CREATE TABLE pesanan (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  pelanggan VARCHAR(100),
+  nama_pelanggan VARCHAR(100),
+  tipe_pesanan ENUM('Makan di Tempat', 'Bawa Pulang') NOT NULL,
+  nomor_meja VARCHAR(10),
+  catatan VARCHAR(255),
   total INT,
-  metode_pembayaran ENUM('tunai', 'non-tunai'),
-  bukti_pembayaran LONGBLOB,
-  status ENUM('Belum Diproses', 'Sedang Diproses', 'Selesai', 'Dibatalkan'),
+  metode_pembayaran ENUM('Tunai', 'Non-Tunai'),
+  bukti_pembayaran VARCHAR(255),
+  status ENUM('Belum Diproses', 'Sedang Diproses', 'Selesai', 'Dibatalkan') DEFAULT 'Belum Diproses',
   kasir_id INT,
   etalase_id INT,
   waktu_pesan DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -45,7 +49,7 @@ CREATE TABLE detail_pesanan (
   pesanan_id INT,
   menu_id INT,
   jumlah INT,
-  subtotal INT,
+  harga_satuan INT,
   FOREIGN KEY (pesanan_id) REFERENCES pesanan(id),
   FOREIGN KEY (menu_id) REFERENCES menu(id)
 );
