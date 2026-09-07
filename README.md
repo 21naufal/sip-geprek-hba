@@ -1,30 +1,43 @@
+<table>
+<tr>
+<td width="50%" valign="top">
+
 # SIP-Geprek HBA
 
 Sistem Informasi Pemesanan Geprek HBA adalah aplikasi manajemen pemesanan dan transaksi untuk usaha kuliner, dengan tiga peran pengguna (Admin, Kasir, Etalase) yang masing-masing memiliki dashboard dan alur kerja sendiri.
 
-## 🎥 Demo Aplikasi
+**Fitur Utama**
+- Autentikasi multi-role — Admin, Kasir, Etalase
+- Manajemen menu
+- Manajemen pesanan & riwayat
+- Manajemen staff (khusus Admin)
+- Laporan & analitik penjualan
+- Ekspor laporan ke Excel
 
-<video width="100%" controls>
-  <source src="assets/demo-aplikasi.mp4" type="video/mp4">
-  Browser Anda tidak mendukung pemutaran video.
-</video>
+**Teknologi :** `React (Vite)` `TailwindCSS` `Node.js` `Express.js` `MySQL`
 
-## Fitur Utama
+---
 
-- **Autentikasi multi-role** — Admin, Kasir, dan Etalase
-- **Manajemen menu** — tambah, edit, dan kelola daftar menu
-- **Manajemen pesanan** — input pesanan, pantau status, hingga riwayat pesanan
-- **Manajemen staff** — tambah dan edit data staff (khusus Admin)
-- **Laporan & analitik** — laporan penjualan, pendapatan, dan menu terlaris
-- **Ekspor data** — unduh laporan dalam format Excel
+# TIM Pengembang
 
-## Teknologi
+- **Naufal Septio Akbar** — Fullstack Developer
+- **Adnauval Chazomi** — UI/UX Designer
+- **Dwi Febrisa Haffandi** — System Analyst
+- **Silvia Antana Sukma** — System Analyst
+- **M. Alfin Mahardika** — Tester
 
-| Bagian | Teknologi |
-|---|---|
-| Frontend | React (Vite), TailwindCSS |
-| Backend | Node.js, Express.js |
-| Database | MySQL |
+</td>
+<td width="50%" valign="top">
+
+### 🎥 Demo Aplikasi
+
+https://github.com/user-attachments/assets/3bbd3228-412f-464b-bbdc-78d86d2d1c9b
+
+</td>
+</tr>
+</table>
+
+---
 
 ## Instalasi Lokal
 
@@ -35,7 +48,17 @@ git clone https://github.com/21naufal/sip-geprek-hba.git
 cd sip-geprek-hba
 ```
 
-### 2. Backend
+### 2. Setup Database
+
+Buat database MySQL dengan mengimpor `scriptdatabase.sql` yang ada di root project:
+
+```bash
+mysql -u root -p < scriptdatabase.sql
+```
+
+Perintah ini otomatis membuat database `sipgeprek` beserta seluruh tabel yang dibutuhkan.
+
+### 3. Backend
 
 ```bash
 cd backend
@@ -59,10 +82,22 @@ Jalankan server:
 npm run dev
 ```
 
-### 3. Frontend
+Server akan berjalan di `http://localhost:5000`.
+
+### 4. Buat Akun Admin Pertama
+
+Database masih kosong dan tidak ada halaman registrasi publik, jadi akun admin pertama harus dibuat manual lewat script `create-admin.js` (masih di dalam folder `backend/`):
 
 ```bash
-cd frontend
+node create-admin.js "Nama Admin" "081234567890" "password_rahasia"
+```
+
+Setelah akun admin ini dibuat, akun Kasir dan Etalase berikutnya bisa langsung ditambahkan dari dashboard Admin (menu Staff) — tidak perlu lewat script lagi.
+
+### 5. Frontend
+
+```bash
+cd ../frontend
 npm install
 ```
 
@@ -78,12 +113,8 @@ Jalankan aplikasi:
 npm run dev
 ```
 
-Frontend akan berjalan di `http://localhost:5173`.
+Frontend akan berjalan di `http://localhost:5173`. Login menggunakan nomor telepon & password akun admin yang baru dibuat.
 
 ## Lisensi
 
 Proyek ini bebas digunakan untuk pembelajaran atau pengembangan lanjutan. Tidak untuk dikomersialisasikan tanpa izin.
-
-## Developer
-
-**Naufal Septio Akbar** — Fullstack Developer
